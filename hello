@@ -7,15 +7,16 @@
 :vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
 :vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
 :vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
-S_0000020fbe642cb0 .scope module, "hello_world" "hello_world" 2 3;
+S_0000029d6e402510 .scope module, "hello_world" "hello_world" 2 3;
  .timescale 0 0;
-    .scope S_0000020fbe642cb0;
+    .scope S_0000029d6e402510;
 T_0 ;
-    %vpi_call 2 6 "$display", "A" {0 0 0};
+    %vpi_call 2 10 "$display", "B" {0 0 0};
+    %vpi_call 2 11 "$display", "A" {0 0 0};
     %delay 100, 0;
-    %vpi_call 2 7 "$display", "B" {0 0 0};
+    %vpi_call 2 12 "$display", "B" {0 0 0};
     %delay 10, 0;
-    %vpi_call 2 8 "$finish" {0 0 0};
+    %vpi_call 2 13 "$finish" {0 0 0};
     %end;
     .thread T_0;
 # The file index is used to find the file name in the following table.

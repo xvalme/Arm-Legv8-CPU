@@ -1,13 +1,17 @@
 //This is a comment
 
-module hello_world;
+module hello_world();
+
+wire [2:0] a;
+reg potato;
 
 initial begin
-    $display ("A");
 
-    wire [1:0] //2 bit wire
+    $display ("B");
+    $display("A");
     #100 $display ("B");
     #10 $finish;
+
 end 
 
 endmodule
