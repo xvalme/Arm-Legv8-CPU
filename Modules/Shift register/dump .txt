@@ -1,0 +1,38 @@
+
+//Number of bits of output
+parameter N = 5;
+
+always @(posedge (clk)) begin
+
+	if (enable == 1) begin
+
+		if (function == 2'd0)
+
+			data <= loadin;
+
+		if (function == 2'b01)
+
+			//Shift right
+			//Removes the least significant bit and adds left_in as MSB
+			data <= {left_in, data[N-1:1]};
+
+		if (function == 2'b10) 
+
+			//SL
+			//Removes MSB and adds a new LSB
+
+			data <= {data[N-2:0], right_in};
+
+		else
+
+			//Reset
+			data <= 0;
+
+	end 
+
+	else
+
+		//Disabled
+		data <= data;
+
+end
