@@ -1,96 +1,154 @@
-#! /usr/bin/vvp
-:ivl_version "10.3 (stable)";
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
 :ivl_delay_selection "TYPICAL";
 :vpi_time_precision + 0;
-:vpi_module "system";
-:vpi_module "vhdl_sys";
-:vpi_module "v2005_math";
-:vpi_module "va_math";
-S_0x55af1156c260 .scope module, "shift" "shift" 2 4;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000002116d88a860 .scope module, "tb" "tb" 2 3;
  .timescale 0 0;
-    .port_info 0 /INPUT 1 "clk"
-    .port_info 1 /INPUT 1 "enable"
-    .port_info 2 /INPUT 1 "right_in"
-    .port_info 3 /INPUT 1 "left_in"
-    .port_info 4 /INPUT 5 "loadin"
-    .port_info 5 /INPUT 2 "working_mode"
-    .port_info 6 /OUTPUT 5 "data"
-P_0x55af11546360 .param/l "N" 0 2 4, +C4<00000000000000000000000000000101>;
-o0x7f15d3024018 .functor BUFZ 1, C4<z>; HiZ drive
-v0x55af11534070_0 .net "clk", 0 0, o0x7f15d3024018;  0 drivers
-v0x55af1157d6b0_0 .var "data", 4 0;
-o0x7f15d3024078 .functor BUFZ 1, C4<z>; HiZ drive
-v0x55af1157d790_0 .net "enable", 0 0, o0x7f15d3024078;  0 drivers
-o0x7f15d30240a8 .functor BUFZ 1, C4<z>; HiZ drive
-v0x55af1157d860_0 .net "left_in", 0 0, o0x7f15d30240a8;  0 drivers
-o0x7f15d30240d8 .functor BUFZ 5, C4<zzzzz>; HiZ drive
-v0x55af1157d920_0 .net "loadin", 4 0, o0x7f15d30240d8;  0 drivers
-o0x7f15d3024108 .functor BUFZ 1, C4<z>; HiZ drive
-v0x55af1157da50_0 .net "right_in", 0 0, o0x7f15d3024108;  0 drivers
-o0x7f15d3024138 .functor BUFZ 2, C4<zz>; HiZ drive
-v0x55af1157db10_0 .net "working_mode", 1 0, o0x7f15d3024138;  0 drivers
-E_0x55af11569b00 .event posedge, v0x55af11534070_0;
-S_0x55af1156c430 .scope module, "tb" "tb" 3 3;
+P_000002116d79ad20 .param/l "N" 0 2 5, +C4<00000000000000000000000000000101>;
+v000002116d772a10_0 .var "clk", 0 0;
+v000002116d772ab0_0 .net "data", 4 0, v000002116d88e070_0;  1 drivers
+v000002116d772b50_0 .var "enable", 0 0;
+v000002116d772bf0_0 .var "left_in", 0 0;
+v000002116d772c90_0 .var "loadin", 4 0;
+v000002116d772d30_0 .var "right_in", 0 0;
+v000002116d772dd0_0 .var "working_mode", 1 0;
+S_000002116d88ac40 .scope module, "test" "shift" 2 19, 3 4 0, S_000002116d88a860;
  .timescale 0 0;
-P_0x55af1156c5b0 .param/l "N" 0 3 5, +C4<00000000000000000000000000000101>;
-v0x55af1157dcd0_0 .var "clk", 0 0;
-L_0x7f15d2fdb018 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
-v0x55af1157ddb0_0 .net "enable", 0 0, L_0x7f15d2fdb018;  1 drivers
-L_0x7f15d2fdb0a8 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
-v0x55af1157de70_0 .net "left_in", 0 0, L_0x7f15d2fdb0a8;  1 drivers
-L_0x7f15d2fdb060 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
-v0x55af1157df10_0 .net "right_in", 0 0, L_0x7f15d2fdb060;  1 drivers
-    .scope S_0x55af1156c260;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "enable";
+    .port_info 2 /INPUT 1 "right_in";
+    .port_info 3 /INPUT 1 "left_in";
+    .port_info 4 /INPUT 5 "loadin";
+    .port_info 5 /INPUT 2 "working_mode";
+    .port_info 6 /OUTPUT 5 "data";
+P_000002116d79b2a0 .param/l "N" 0 3 4, +C4<00000000000000000000000000000101>;
+v000002116d7731c0_0 .net "clk", 0 0, v000002116d772a10_0;  1 drivers
+v000002116d88e070_0 .var "data", 4 0;
+v000002116d7976c0_0 .net "enable", 0 0, v000002116d772b50_0;  1 drivers
+v000002116d797760_0 .net "left_in", 0 0, v000002116d772bf0_0;  1 drivers
+v000002116d88add0_0 .net "loadin", 4 0, v000002116d772c90_0;  1 drivers
+v000002116d88ae70_0 .net "right_in", 0 0, v000002116d772d30_0;  1 drivers
+v000002116d88af10_0 .net "working_mode", 1 0, v000002116d772dd0_0;  1 drivers
+E_000002116d79b7a0 .event posedge, v000002116d7731c0_0;
+    .scope S_000002116d88ac40;
 T_0 ;
-    %wait E_0x55af11569b00;
-    %load/vec4 v0x55af1157d790_0;
+    %wait E_000002116d79b7a0;
+    %load/vec4 v000002116d7976c0_0;
     %pad/u 32;
     %cmpi/e 1, 0, 32;
     %jmp/0xz  T_0.0, 4;
-    %load/vec4 v0x55af1157db10_0;
+    %load/vec4 v000002116d88af10_0;
     %cmpi/e 0, 0, 2;
     %jmp/0xz  T_0.2, 4;
-    %load/vec4 v0x55af1157d920_0;
-    %assign/vec4 v0x55af1157d6b0_0, 0;
+    %load/vec4 v000002116d88add0_0;
+    %store/vec4 v000002116d88e070_0, 0, 5;
+    %jmp T_0.3;
 T_0.2 ;
-    %load/vec4 v0x55af1157db10_0;
+    %load/vec4 v000002116d88af10_0;
     %cmpi/e 1, 0, 2;
     %jmp/0xz  T_0.4, 4;
-    %load/vec4 v0x55af1157d860_0;
-    %load/vec4 v0x55af1157d6b0_0;
+    %load/vec4 v000002116d797760_0;
+    %load/vec4 v000002116d88e070_0;
     %parti/s 4, 1, 2;
     %concat/vec4; draw_concat_vec4
-    %assign/vec4 v0x55af1157d6b0_0, 0;
+    %assign/vec4 v000002116d88e070_0, 0;
+    %jmp T_0.5;
 T_0.4 ;
-    %load/vec4 v0x55af1157db10_0;
+    %load/vec4 v000002116d88af10_0;
     %cmpi/e 2, 0, 2;
     %jmp/0xz  T_0.6, 4;
-    %load/vec4 v0x55af1157d6b0_0;
+    %load/vec4 v000002116d88e070_0;
     %parti/s 4, 0, 2;
-    %load/vec4 v0x55af1157da50_0;
+    %load/vec4 v000002116d88ae70_0;
     %concat/vec4; draw_concat_vec4
-    %assign/vec4 v0x55af1157d6b0_0, 0;
+    %assign/vec4 v000002116d88e070_0, 0;
     %jmp T_0.7;
 T_0.6 ;
     %pushi/vec4 0, 0, 5;
-    %assign/vec4 v0x55af1157d6b0_0, 0;
+    %assign/vec4 v000002116d88e070_0, 0;
 T_0.7 ;
+T_0.5 ;
+T_0.3 ;
     %jmp T_0.1;
 T_0.0 ;
-    %load/vec4 v0x55af1157d6b0_0;
-    %assign/vec4 v0x55af1157d6b0_0, 0;
+    %load/vec4 v000002116d88e070_0;
+    %assign/vec4 v000002116d88e070_0, 0;
 T_0.1 ;
     %jmp T_0;
     .thread T_0;
-    .scope S_0x55af1156c430;
+    .scope S_000002116d88a860;
 T_1 ;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x55af1157dcd0_0, 0, 1;
+    %store/vec4 v000002116d772a10_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002116d772b50_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002116d772d30_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002116d772bf0_0, 0, 1;
+    %pushi/vec4 0, 0, 5;
+    %store/vec4 v000002116d772c90_0, 0, 5;
+    %pushi/vec4 0, 0, 2;
+    %store/vec4 v000002116d772dd0_0, 0, 2;
     %end;
     .thread T_1;
+    .scope S_000002116d88a860;
+T_2 ;
+    %delay 1, 0;
+    %load/vec4 v000002116d772a10_0;
+    %inv;
+    %store/vec4 v000002116d772a10_0, 0, 1;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_000002116d88a860;
+T_3 ;
+    %vpi_call 2 31 "$dumpfile", "test_output.vcd" {0 0 0};
+    %vpi_call 2 32 "$dumpvars" {0 0 0};
+    %delay 1, 0;
+    %vpi_call 2 34 "$display", "Simulation started. Current data: %b", v000002116d772ab0_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002116d772b50_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "[ENABLE TEST] Current data: %b", v000002116d772ab0_0 {0 0 0};
+    %pushi/vec4 0, 0, 2;
+    %store/vec4 v000002116d772dd0_0, 0, 2;
+    %pushi/vec4 19, 0, 5;
+    %store/vec4 v000002116d772c90_0, 0, 5;
+    %delay 2, 0;
+    %vpi_call 2 39 "$display", "[LOAD TEST of 10011] Current data: %b", v000002116d772ab0_0 {0 0 0};
+    %pushi/vec4 1, 0, 2;
+    %store/vec4 v000002116d772dd0_0, 0, 2;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002116d772bf0_0, 0, 1;
+    %delay 2, 0;
+    %vpi_call 2 42 "$display", "[SR of 1] Current data: %b", v000002116d772ab0_0 {0 0 0};
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "[SR of 1 again] Current data: %b", v000002116d772ab0_0 {0 0 0};
+    %pushi/vec4 2, 0, 2;
+    %store/vec4 v000002116d772dd0_0, 0, 2;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002116d772d30_0, 0, 1;
+    %delay 2, 0;
+    %vpi_call 2 46 "$display", "[SL of 0] Current data: %b", v000002116d772ab0_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002116d772d30_0, 0, 1;
+    %delay 2, 0;
+    %vpi_call 2 48 "$display", "[SL of 1] Current data: %b", v000002116d772ab0_0 {0 0 0};
+    %pushi/vec4 3, 0, 2;
+    %store/vec4 v000002116d772dd0_0, 0, 2;
+    %delay 2, 0;
+    %vpi_call 2 50 "$display", "[Reset] Current data: %b", v000002116d772ab0_0 {0 0 0};
+    %vpi_call 2 52 "$finish" {0 0 0};
+    %end;
+    .thread T_3;
 # The file index is used to find the file name in the following table.
 :file_names 4;
     "N/A";
     "<interactive>";
-    "./shift_register.v";
     "shift_register_tb.v";
+    "./shift_register.v";

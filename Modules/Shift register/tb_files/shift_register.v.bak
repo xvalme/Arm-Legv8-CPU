@@ -30,6 +30,7 @@ always @(posedge (clk)) begin
 			end
 
 		else if (working_mode == 2'b10) begin
+			$display("Called SL");
 
 			//SL
 			//Removes MSB and adds a new LSB
@@ -40,6 +41,7 @@ always @(posedge (clk)) begin
 		else begin
 
 			//Reset
+			$display("Called Reset");
 			data <= 0;
 			
 		end
