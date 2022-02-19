@@ -1,0 +1,36 @@
+$date
+	Fri Feb 18 16:38:34 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tb $end
+$var wire 64 ! out [63:0] $end
+$var reg 32 " in [31:0] $end
+$scope module test $end
+$var wire 32 # in [31:0] $end
+$var reg 64 $ out [63:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 $
+b0 #
+b0 "
+b0 !
+$end
+#1
+b1111 !
+b1111 $
+b1111 "
+b1111 #
+#2
+b111111111111111111111111111110001 !
+b111111111111111111111111111110001 $
+b11111111111111111111111111110001 "
+b11111111111111111111111111110001 #
+#7

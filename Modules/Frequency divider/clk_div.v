@@ -1,8 +1,10 @@
-module clk_div #(parameter N = 5)(
+module clk_div(
 	input wire clk,
 	output wire clk_out);
 	
-reg counter	[N-1:0] = 0;
+parameter N = 5;
+	
+reg [N-1:0] counter= 0;
 
 assign clk_out = counter[N-1];
 
