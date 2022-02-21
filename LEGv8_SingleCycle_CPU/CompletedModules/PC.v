@@ -1,11 +1,15 @@
 //Program counter with jump function
 
 module pc (input wire clock, 
-	input wire jump[31:0],
+	input wire [31:0] jump,
 	input wire en_jump,
 	output reg [31:0] counter);
 
-always (posedge(clk)) begin 
+initial begin
+	counter = 0;
+end
+
+always @(posedge(clock)) begin 
 
 	if (en_jump == 1) begin 
 
