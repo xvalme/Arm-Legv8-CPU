@@ -2,6 +2,7 @@
 //Stores 64 bit information 
 
 module ram (
+	input clock,
 	input [63:0] address,
 	input read_en,
 	input write_en,
@@ -11,7 +12,7 @@ module ram (
 
 reg [63:0] data [31:0]; //64 bit information in 2^32 addresses.
 
-always @* begin
+always @ (posedge(clock)) begin
 //Read or write only. If both enable are high, read has priority and will run instead
 
 	if (read_en) begin 

@@ -1,4 +1,6 @@
-module control_unit (Instruction,
+module control_unit (
+clock,
+Instruction,
 Reg2Loc, 
 ALUSrc, 
 MemtoReg, 
@@ -8,15 +10,16 @@ MemWrite,
 Branch, 
 AluOp);
 
+input wire clock;
 input wire [10:0] Instruction;
 output reg Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemRead, MemWrite, Branch;
 output reg [1:0] AluOp;
 
-always @* begin 
+always @ (posedge(clock)) begin 
 
-	case (Instruction)
+	casex (Instruction)
 	
-		'b11111000010: begin //LDUR
+		11'b11111000010: begin //LDUR
 		
 			Reg2Loc <= 0;
 			ALUSrc <= 1;
@@ -29,7 +32,7 @@ always @* begin
 			
 		end
 		
-		'b11111000000: begin //STUR
+		11'b11111000000: begin //STUR
 		
 			Reg2Loc <= 1;
 			ALUSrc <= 1;
@@ -42,7 +45,7 @@ always @* begin
 			
 		end
 		
-		'b10110100xxx: begin  //CBZ
+		11'b10110100xxx: begin  //CBZ
 		
 			Reg2Loc <= 1;
 			ALUSrc <= 0;
@@ -55,7 +58,7 @@ always @* begin
 			
 		end
 		
-		'b1xx0101x000: begin //R Type
+		11'b1xx0101x000: begin //R Type
 		
 			Reg2Loc <= 0;
 			ALUSrc <= 0;
@@ -69,6 +72,7 @@ always @* begin
 		end
 		
 		default: begin
+
 				Reg2Loc <= 0;
 				ALUSrc <= 0;
 				MemtoReg <= 0;

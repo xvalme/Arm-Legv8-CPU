@@ -22,7 +22,7 @@ module cpu (
 );
 
 always @ (posedge(clock)) begin
-	$display ("RegWrite: %b", instruction[31:21]);
+	$display (": %b", instruction[31:21]);
 	$display ("-----------");
 end
 
@@ -34,7 +34,7 @@ pc PC (.clock(clock), .en_jump(en_jump), .jump(jump_address), .counter(counter))
 
 //ROM. Computes instruction from PC.
 output wire [31:0] instruction;
-rom ROM (counter, instruction);
+rom ROM (clock, counter, instruction);
 
 //Reg2Loc Mux.
 wire [4:0] out_reg2loc;
@@ -42,7 +42,8 @@ reg2loc_mux reg2loc_mux (instruction[20:16], instruction[4:0], reg2loc, out_reg2
 
 //Registers
 output wire [63:0] read1, read2;
-regs regs (instruction[9:5], 
+regs regs (clock,
+			instruction[9:5], 
 			out_reg2loc,
 			instruction[4:0],
 			RegWrite, 
@@ -61,11 +62,11 @@ alu ALU (ALUCtrl, read1, out_ALUSrc, ALU_out, Zero);
 
 //ALUCtrl
 wire [3:0] ALUCtrl; //Alu Code to select working function
-aluctrl aluctrl (AluOp, instruction[31:21], ALUCtrl);
+aluctrl aluctrl (clock, AluOp, instruction[31:21], ALUCtrl);
 
 //Data Memory
 output wire [63:0] mem_data;
-ram ram (ALU_out, readmem_en, writemem_en, read2, mem_data);
+ram ram (clock, ALU_out, readmem_en, writemem_en, read2, mem_data);
 
 //Memtoreg Mux at the end of memory 
 wire [63:0] write_data;
@@ -77,7 +78,7 @@ wire readmem_en, writemem_en;
 wire Branch;
 wire [1:0] AluOp;
 
-control_unit control_unit (
+control_unit control_unit (clock,
 instruction[31:21], reg2loc, ALUSrc, memtoreg, 
 RegWrite, readmem_en, writemem_en, Branch, AluOp);
 

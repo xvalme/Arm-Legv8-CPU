@@ -1,6 +1,7 @@
 //ROM for the instructions
 
 module rom (
+	input clock,
 	input [63:0] counter,
 	output reg [31:0] instruction 
 );
@@ -13,7 +14,7 @@ initial begin //Function loader.
 
 end
 
-always @* begin
+always @ (posedge(clock)) begin
 
 	instruction <= instructions [counter];
 

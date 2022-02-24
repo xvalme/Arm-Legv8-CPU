@@ -3,6 +3,7 @@
 
 module regs (
 
+	input clock,
 	input [4:0] add1,
 	input [4:0] add2,
 	input [4:0] write_add,
@@ -27,18 +28,13 @@ initial begin
 
 end
 
-always @* begin
+always @ (posedge(clock)) begin
 
 	read_1 <= regs [add1];
 	read_2 <= regs [add2];
 
-	if (write_en) begin
-		
-		regs[write_add] <= write_data;
-
-	end
-
-	else begin end
+	if (write_en) regs[write_add] <= write_data;
+	else regs[write_add] <= regs[write_add];
 
 end
 
