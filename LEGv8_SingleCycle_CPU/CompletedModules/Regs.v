@@ -3,9 +3,9 @@
 
 module regs (
 
-	input [5:0] add1,
-	input [5:0] add2,
-	input [5:0] write_add,
+	input [4:0] add1,
+	input [4:0] add2,
+	input [4:0] write_add,
 
 	input write_en,
 	input [63:0] write_data,
@@ -21,6 +21,9 @@ initial begin
 
 	//Register 31 goes to 0 just like the guidelines.
 	regs [31] <= 0;
+	
+	//Register 1 goes to 1 for testing.
+	regs [1] <= 1;
 
 end
 

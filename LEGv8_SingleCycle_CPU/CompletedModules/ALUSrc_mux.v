@@ -1,8 +1,9 @@
 module alusrc_mux (
 
-	input [63:0] reg2, address;
-	input alusrc;
-	output reg [63:0] out;
+	input [63:0] reg2, 
+	input [63:0] address,
+	input alusrc,
+	output reg [63:0] out
 
 );
 

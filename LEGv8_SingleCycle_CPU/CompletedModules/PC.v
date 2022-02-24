@@ -1,9 +1,9 @@
 //Program counter with jump function
 
 module pc (input wire clock, 
-	input wire [31:0] jump,
+	input wire [63:0] jump,
 	input wire en_jump,
-	output reg [31:0] counter);
+	output reg [63:0] counter);
 
 initial begin
 	counter = 0;
