@@ -2,7 +2,6 @@
 //Stores 64 bit information 
 
 module ram (
-	input clock,
 	input [63:0] address,
 	input read_en,
 	input write_en,
@@ -10,27 +9,29 @@ module ram (
 	output reg [63:0] out
 );
 
-reg [63:0] data [31:0]; //64 bit information in 2^32 addresses.
+reg [63:0] data [31:0]; //64 bit information in 32 addresses.
 
-always @ (posedge(clock)) begin
-//Read or write only. If both enable are high, read has priority and will run instead
+integer initCount;
 
-	if (read_en) begin 
+initial begin //Filling with values
+    for (initCount = 0; initCount < 32; initCount = initCount + 1) begin
+      data[initCount] = initCount * 100;
+	end
+end
+	
+//Read or write only. If both enable are high, write has priority and will run instead
+//This is a latch since not all values of if - else are written.
 
-		out <= data [address];
+always @* begin
+	if (write_en) begin 
+
+		data [address] <= data_in;
 
 	end 
 
-	else if (write_en) begin
+	if (read_en) begin
 
-		data [address] <= data_in;
-		out <= data_in; 
-
-	end
-
-	else begin 
-		//No reading nor writting
-		out <= 0;
+		out <= data [address];
 
 	end
 

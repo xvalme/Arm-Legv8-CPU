@@ -21,11 +21,6 @@ module cpu (
 	mem_data
 );
 
-always @ (posedge(clock)) begin
-	$display (": %b", instruction[31:21]);
-	$display ("-----------");
-end
-
 input wire clock;
 
 //Program Counter. It already has a jump feature.
@@ -62,11 +57,11 @@ alu ALU (ALUCtrl, read1, out_ALUSrc, ALU_out, Zero);
 
 //ALUCtrl
 wire [3:0] ALUCtrl; //Alu Code to select working function
-aluctrl aluctrl (clock, AluOp, instruction[31:21], ALUCtrl);
+aluctrl aluctrl (AluOp, instruction[31:21], ALUCtrl);
 
 //Data Memory
 output wire [63:0] mem_data;
-ram ram (clock, ALU_out, readmem_en, writemem_en, read2, mem_data);
+ram ram (ALU_out, readmem_en, writemem_en, read2, mem_data);
 
 //Memtoreg Mux at the end of memory 
 wire [63:0] write_data;
@@ -78,7 +73,7 @@ wire readmem_en, writemem_en;
 wire Branch;
 wire [1:0] AluOp;
 
-control_unit control_unit (clock,
+control_unit control_unit (
 instruction[31:21], reg2loc, ALUSrc, memtoreg, 
 RegWrite, readmem_en, writemem_en, Branch, AluOp);
 

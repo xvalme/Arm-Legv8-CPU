@@ -1,5 +1,4 @@
 module control_unit (
-clock,
 Instruction,
 Reg2Loc, 
 ALUSrc, 
@@ -10,12 +9,11 @@ MemWrite,
 Branch, 
 AluOp);
 
-input wire clock;
 input wire [10:0] Instruction;
 output reg Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemRead, MemWrite, Branch;
 output reg [1:0] AluOp;
 
-always @ (posedge(clock)) begin 
+always @ (Instruction) begin 
 
 	casex (Instruction)
 	

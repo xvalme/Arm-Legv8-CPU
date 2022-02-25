@@ -9,12 +9,12 @@ module rom (
 reg [31:0] instructions [31:0];
 
 initial begin //Function loader.
-	//It seems that $readmemh works on synthetis for Xilinx (?)
+	//It seems that $readmemb works on synthetis for Xilinx (?)
 	$readmemb ("instructions.txt", instructions);
 
 end
 
-always @ (posedge(clock)) begin
+always @ (negedge(clock)) begin
 
 	instruction <= instructions [counter];
 

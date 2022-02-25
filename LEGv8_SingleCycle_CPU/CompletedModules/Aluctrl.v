@@ -1,10 +1,9 @@
 module aluctrl (
-  input clock, 
   input [1:0] ALU_Op,
   input [10:0] ALU_INSTRUCTION,
   output reg [3:0] ALU_Out);
   
- always @ (posedge(clock)) begin
+ always @(ALU_INSTRUCTION or ALU_Op) begin
 
 	case (ALU_Op)
       2'b00 : ALU_Out = 4'b0010;

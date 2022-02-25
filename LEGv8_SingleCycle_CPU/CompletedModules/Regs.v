@@ -2,7 +2,6 @@
 //Writting and reading in the same clock is ok, but the written register will have the old value (obviously)
 
 module regs (
-
 	input clock,
 	input [4:0] add1,
 	input [4:0] add2,
@@ -17,25 +16,33 @@ module regs (
 );
 
 reg [63:0] regs [31:0];
+integer i;
+integer u;
 
 initial begin 
 
 	//Register 31 goes to 0 just like the guidelines.
 	regs [31] <= 0;
 	
-	//Register 1 goes to 1 for testing.
-	regs [1] <= 1;
+	//Giving values to registers from 0 up to 30
+	for (i = 0; i<31; i = i + 1) begin
+		regs[i] <= i;
+	end
 
 end
 
-always @ (posedge(clock)) begin
+always @(posedge(clock)) begin
 
-	read_1 <= regs [add1];
-	read_2 <= regs [add2];
+	read_1 = regs [add1];
+	read_2 = regs [add2];
+	
+end
 
-	if (write_en) regs[write_add] <= write_data;
-	else regs[write_add] <= regs[write_add];
-
+always @(negedge(clock)) begin
+	if (write_en) begin
+		regs[write_add] = write_data;
+	end
+		
 end
 
 endmodule

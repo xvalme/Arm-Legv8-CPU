@@ -9,14 +9,13 @@ initial begin
 	counter = 0;
 end
 
-always @(posedge(clock)) begin 
+always @(negedge(clock)) begin 
 
 	if (en_jump == 1) begin 
 
 		counter <= jump;
-
 	end
-
+	
 	else begin
 
 		counter <= counter + 1;
