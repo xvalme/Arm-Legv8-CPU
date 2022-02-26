@@ -12,6 +12,7 @@ module ram (
 reg [63:0] data [31:0]; //64 bit information in 32 addresses.
 
 integer initCount;
+integer u;
 
 initial begin //Filling with values
     for (initCount = 0; initCount < 32; initCount = initCount + 1) begin
@@ -34,6 +35,9 @@ always @* begin
 		out <= data [address];
 
 	end
+	
+	$display("-----");
+	for (u = 0; u<32; u = u + 1) $display("%d: %d", u, data [u]);
 
 end
 
