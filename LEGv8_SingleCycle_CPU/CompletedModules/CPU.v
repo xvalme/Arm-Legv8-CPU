@@ -87,4 +87,10 @@ alu JumpAdder (4'd2, counter, sign_extended_address, jump_address,);
 wire [63:0] sign_extended_address;
 sign_extender sign_extender (instruction,sign_extended_address);
 
+//Shift extender that picks up the sign extended address to send to PC
+//NOT USED HERE SINCE WE CONSIDER THE WORDS TO BE 32 BIT LONG
+/*
+wire [63:0] shifted_add;
+shift_extender shift_extender (sign_extended_address, shifted_add);
+*/
 endmodule
