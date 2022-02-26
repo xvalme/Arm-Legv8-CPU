@@ -22,15 +22,6 @@ initial begin
 
 clock = 0;
 #20
-/*
-#1 $display("Count: %d Inst: %b R1:%d R2:%d ALUout:%d memdata:%d", 
-counter, instruction, read1, read2, ALUout, memdata);
-
-for (i = 0; i<10;i = i+1) begin 
-#2 $display("Count: %d Inst: %b R1:%d R2:%d ALUout:%d memdata:%d", 
-counter, instruction, read1, read2, ALUout, memdata);
-end
-*/
 
 $finish;
 

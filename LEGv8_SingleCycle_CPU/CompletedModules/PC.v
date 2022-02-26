@@ -13,7 +13,7 @@ always @(negedge(clock)) begin
 
 	if (en_jump == 1) begin 
 
-		counter <= jump;
+		counter <= jump + 1;
 	end
 	
 	else begin

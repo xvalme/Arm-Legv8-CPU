@@ -70,14 +70,14 @@ memtoreg_mux memtoreg_mux (ALU_out, mem_data, memtoreg, write_data);
 //CoNtRoLUnIT. Takes care of selecting working mode of components
 wire reg2loc, ALUSrc, memtoreg, RegWrite;
 wire readmem_en, writemem_en;
-wire Branch;
+wire Branch, UncBranch;
 wire [1:0] AluOp;
 
 control_unit control_unit (
 instruction[31:21], reg2loc, ALUSrc, memtoreg, 
-RegWrite, readmem_en, writemem_en, Branch, AluOp);
+RegWrite, readmem_en, writemem_en, Branch,UncBranch, AluOp);
 
-wire en_jump = Branch & Zero;
+wire en_jump = (Branch & Zero) | UncBranch;
 
 //ALU that works as an Adder for the jumping address.
 wire [63:0] jump_address;

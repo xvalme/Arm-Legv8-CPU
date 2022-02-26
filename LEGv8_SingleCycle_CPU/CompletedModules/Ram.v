@@ -36,9 +36,10 @@ always @* begin
 
 	end
 	
+	/*For testing
 	$display("-----");
 	for (u = 0; u<32; u = u + 1) $display("%d: %d", u, data [u]);
-
+	*/
 end
 
 endmodule

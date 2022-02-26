@@ -7,10 +7,11 @@ RegWrite,
 MemRead,
 MemWrite,
 Branch, 
+UncBranch,
 AluOp);
 
 input wire [10:0] Instruction;
-output reg Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemRead, MemWrite, Branch;
+output reg Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemRead, MemWrite, Branch, UncBranch;
 output reg [1:0] AluOp;
 
 always @ (Instruction) begin 
@@ -26,6 +27,7 @@ always @ (Instruction) begin
 			MemRead <= 1;
 			MemWrite <= 0;
 			Branch <= 0;
+			UncBranch <= 0;
 			AluOp <= 'b00;
 			
 		end
@@ -39,6 +41,7 @@ always @ (Instruction) begin
 			MemRead <= 0;
 			MemWrite <= 1;
 			Branch <= 0;
+			UncBranch <= 0;
 			AluOp <= 'b00;
 			
 		end
@@ -52,6 +55,21 @@ always @ (Instruction) begin
 			MemRead <= 0;
 			MemWrite <= 1;
 			Branch <= 0;
+			UncBranch <= 0;
+			AluOp <= 'b01;
+			
+		end
+		
+		11'b000101xxxxx: begin //Branch
+		
+			Reg2Loc <= 0;
+			ALUSrc <= 0;
+			MemtoReg <= 0;
+			RegWrite <= 0;
+			MemRead <= 0;
+			MemWrite <= 0;
+			Branch <= 0;
+			UncBranch <= 1;
 			AluOp <= 'b01;
 			
 		end
@@ -66,9 +84,10 @@ always @ (Instruction) begin
 			MemWrite <= 0;
 			Branch <= 0;
 			AluOp <= 'b10;
+			UncBranch <= 0;
 			
 		end
-		
+	
 		default: begin
 
 				Reg2Loc <= 0;
@@ -79,6 +98,7 @@ always @ (Instruction) begin
 				MemWrite <= 0;
 				Branch <= 0;
 				AluOp <= 0;
+				UncBranch <= 0;
 		end
 
 	endcase

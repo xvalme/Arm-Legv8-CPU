@@ -43,9 +43,10 @@ always @(negedge(clock)) begin
 		regs[write_add] = write_data;
 	end
 	
+	/*For testing
 	$display("-----");
 	for (u = 0; u<32; u = u + 1) $display("Reg %d: %d", u, regs [u]);
-		
+		*/
 end
 
 endmodule
