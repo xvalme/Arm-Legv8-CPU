@@ -9,7 +9,8 @@ module ram (
 	output reg [63:0] out
 );
 
-output reg [63:0] data [31:0]; //64 bit information in 32 addresses.
+parameter N = 31;
+output reg [63:0] data [N:0]; //64 bit information in 32 addresses.
 
 integer initCount;
 
