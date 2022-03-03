@@ -53,8 +53,8 @@ always @ (Instruction) begin
 			MemtoReg <= 0;
 			RegWrite <= 0;
 			MemRead <= 0;
-			MemWrite <= 1;
-			Branch <= 0;
+			MemWrite <= 0;
+			Branch <= 1;
 			UncBranch <= 0;
 			AluOp <= 'b01;
 			

@@ -1,0 +1,452 @@
+$date
+	Thu Mar 03 17:23:29 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module CPU_tb $end
+$scope module cpu $end
+$var wire 1 ! clock $end
+$var wire 1 " en_jump $end
+$var wire 1 # writemem_en $end
+$var wire 64 $ write_data [63:0] $end
+$var wire 64 % sign_extended_address [63:0] $end
+$var wire 1 & reg2loc $end
+$var wire 1 ' readmem_en $end
+$var wire 64 ( read2 [63:0] $end
+$var wire 64 ) read1 [63:0] $end
+$var wire 5 * out_reg2loc [4:0] $end
+$var wire 64 + out_ALUSrc [63:0] $end
+$var wire 1 , memtoreg $end
+$var wire 64 - mem_data [63:0] $end
+$var wire 64 . jump_address [63:0] $end
+$var wire 32 / instruction [31:0] $end
+$var wire 64 0 counter [63:0] $end
+$var wire 1 1 Zero $end
+$var wire 1 2 UncBranch $end
+$var wire 1 3 RegWrite $end
+$var wire 1 4 Branch $end
+$var wire 2 5 AluOp [1:0] $end
+$var wire 64 6 ALU_out [63:0] $end
+$var wire 1 7 ALUSrc $end
+$var wire 4 8 ALUCtrl [3:0] $end
+$scope module ALU $end
+$var wire 64 9 B [63:0] $end
+$var wire 4 : ALUctr [3:0] $end
+$var wire 64 ; A [63:0] $end
+$var reg 64 < Out [63:0] $end
+$var reg 1 1 Zero $end
+$upscope $end
+$scope module JumpAdder $end
+$var wire 4 = ALUctr [3:0] $end
+$var wire 64 > B [63:0] $end
+$var wire 64 ? A [63:0] $end
+$var reg 64 @ Out [63:0] $end
+$var reg 1 A Zero $end
+$upscope $end
+$scope module PC $end
+$var wire 1 ! clock $end
+$var wire 1 " en_jump $end
+$var wire 64 B jump [63:0] $end
+$var reg 64 C counter [63:0] $end
+$upscope $end
+$scope module ROM $end
+$var wire 1 ! clock $end
+$var wire 64 D counter [63:0] $end
+$var reg 32 E instruction [31:0] $end
+$upscope $end
+$scope module aluctrl $end
+$var wire 11 F ALU_INSTRUCTION [10:0] $end
+$var wire 2 G ALU_Op [1:0] $end
+$var reg 4 H ALU_Out [3:0] $end
+$upscope $end
+$scope module alusrc_mux $end
+$var wire 64 I reg2 [63:0] $end
+$var wire 1 7 alusrc $end
+$var wire 64 J address [63:0] $end
+$var reg 64 K out [63:0] $end
+$upscope $end
+$scope module control_unit $end
+$var wire 11 L Instruction [10:0] $end
+$var reg 1 7 ALUSrc $end
+$var reg 2 M AluOp [1:0] $end
+$var reg 1 4 Branch $end
+$var reg 1 ' MemRead $end
+$var reg 1 # MemWrite $end
+$var reg 1 , MemtoReg $end
+$var reg 1 & Reg2Loc $end
+$var reg 1 3 RegWrite $end
+$var reg 1 2 UncBranch $end
+$upscope $end
+$scope module memtoreg_mux $end
+$var wire 64 N ALU_result [63:0] $end
+$var wire 1 , src $end
+$var wire 64 O data [63:0] $end
+$var reg 64 P out [63:0] $end
+$upscope $end
+$scope module ram $end
+$var wire 64 Q address [63:0] $end
+$var wire 1 ' read_en $end
+$var wire 1 # write_en $end
+$var wire 64 R data_in [63:0] $end
+$var reg 64 S out [63:0] $end
+$var integer 32 T initCount [31:0] $end
+$upscope $end
+$scope module reg2loc_mux $end
+$var wire 5 U a [4:0] $end
+$var wire 5 V b [4:0] $end
+$var wire 1 & in_cable $end
+$var reg 5 W out [4:0] $end
+$upscope $end
+$scope module regs $end
+$var wire 5 X add1 [4:0] $end
+$var wire 5 Y add2 [4:0] $end
+$var wire 1 ! clock $end
+$var wire 5 Z write_add [4:0] $end
+$var wire 64 [ write_data [63:0] $end
+$var wire 1 3 write_en $end
+$var reg 64 \ read_1 [63:0] $end
+$var reg 64 ] read_2 [63:0] $end
+$upscope $end
+$scope module sign_extender $end
+$var wire 32 ^ in [31:0] $end
+$var reg 64 _ out [63:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b10 _
+b10110100000000000000000001000000 ^
+bx ]
+bx \
+bx [
+b0 Z
+b0 Y
+b10 X
+b0 W
+b0 V
+b0 U
+b100000 T
+bx S
+bx R
+bx Q
+bx P
+bx O
+bx N
+b1 M
+b10110100000 L
+bx K
+b10 J
+bx I
+b111 H
+b1 G
+b10110100000 F
+b10110100000000000000000001000000 E
+b1 D
+b1 C
+b11 B
+0A
+b11 @
+b1 ?
+b10 >
+b10 =
+bx <
+bx ;
+b111 :
+bx 9
+b111 8
+07
+bx 6
+b1 5
+14
+03
+02
+01
+b1 0
+b10110100000000000000000001000000 /
+b11 .
+bx -
+0,
+bx +
+b0 *
+bx )
+bx (
+0'
+1&
+b10 %
+bx $
+0#
+0"
+0!
+$end
+#1
+1"
+11
+b0 $
+b0 P
+b0 [
+b0 6
+b0 <
+b0 N
+b0 Q
+b0 +
+b0 9
+b0 K
+b0 (
+b0 I
+b0 R
+b0 ]
+1!
+#2
+01
+bx 6
+bx <
+bx N
+bx Q
+bx -
+bx O
+bx S
+bx $
+bx P
+bx [
+b0xxxxxxxxx +
+b0xxxxxxxxx 9
+b0xxxxxxxxx K
+0"
+b10 8
+b10 :
+b10 H
+b0 5
+b0 G
+b0 M
+04
+1'
+13
+1,
+17
+0&
+bx *
+bx W
+bx Y
+b0xxxxxxxxx %
+b0xxxxxxxxx >
+b0xxxxxxxxx J
+b0xxxxxxxxx _
+bx .
+bx @
+bx B
+bx L
+bx F
+bx Z
+bx X
+bx V
+bx U
+bx /
+bx E
+bx ^
+b100 0
+b100 ?
+b100 C
+b100 D
+0!
+#3
+bx (
+bx I
+bx R
+bx ]
+1!
+#4
+b101 0
+b101 ?
+b101 C
+b101 D
+0!
+#5
+1!
+#6
+b110 0
+b110 ?
+b110 C
+b110 D
+0!
+#7
+1!
+#8
+b111 0
+b111 ?
+b111 C
+b111 D
+0!
+#9
+1!
+#10
+b1000 0
+b1000 ?
+b1000 C
+b1000 D
+0!
+#11
+1!
+#12
+b1001 0
+b1001 ?
+b1001 C
+b1001 D
+0!
+#13
+1!
+#14
+b1010 0
+b1010 ?
+b1010 C
+b1010 D
+0!
+#15
+1!
+#16
+b1011 0
+b1011 ?
+b1011 C
+b1011 D
+0!
+#17
+1!
+#18
+b1100 0
+b1100 ?
+b1100 C
+b1100 D
+0!
+#19
+1!
+#20
+b1101 0
+b1101 ?
+b1101 C
+b1101 D
+0!
+#21
+1!
+#22
+b1110 0
+b1110 ?
+b1110 C
+b1110 D
+0!
+#23
+1!
+#24
+b1111 0
+b1111 ?
+b1111 C
+b1111 D
+0!
+#25
+1!
+#26
+b10000 0
+b10000 ?
+b10000 C
+b10000 D
+0!
+#27
+1!
+#28
+b10001 0
+b10001 ?
+b10001 C
+b10001 D
+0!
+#29
+1!
+#30
+b10010 0
+b10010 ?
+b10010 C
+b10010 D
+0!
+#31
+1!
+#32
+b10011 0
+b10011 ?
+b10011 C
+b10011 D
+0!
+#33
+1!
+#34
+b10100 0
+b10100 ?
+b10100 C
+b10100 D
+0!
+#35
+1!
+#36
+b10101 0
+b10101 ?
+b10101 C
+b10101 D
+0!
+#37
+1!
+#38
+b10110 0
+b10110 ?
+b10110 C
+b10110 D
+0!
+#39
+1!
+#40
+b10111 0
+b10111 ?
+b10111 C
+b10111 D
+0!
+#41
+1!
+#42
+b11000 0
+b11000 ?
+b11000 C
+b11000 D
+0!
+#43
+1!
+#44
+b11001 0
+b11001 ?
+b11001 C
+b11001 D
+0!
+#45
+1!
+#46
+b11010 0
+b11010 ?
+b11010 C
+b11010 D
+0!
+#47
+1!
+#48
+b11011 0
+b11011 ?
+b11011 C
+b11011 D
+0!
+#49
+1!
+#50
+b11100 0
+b11100 ?
+b11100 C
+b11100 D
+0!

@@ -23,7 +23,8 @@ initial begin
 	//Register 31 goes to 0 just like the guidelines.
 	//Others will just get filled with trash
 	regs [31] <= 0;
-
+	regs[0] <= 0;
+	
 end
 
 always @(posedge(clock)) begin
