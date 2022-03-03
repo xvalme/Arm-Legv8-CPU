@@ -9,12 +9,11 @@ module ram (
 	output reg [63:0] out
 );
 
-reg [63:0] data [31:0]; //64 bit information in 32 addresses.
+output reg [63:0] data [31:0]; //64 bit information in 32 addresses.
 
 integer initCount;
-integer u;
 
-initial begin //Filling with values
+initial begin //Filling with values by the developer.
     for (initCount = 0; initCount < 32; initCount = initCount + 1) begin
       data[initCount] = initCount * 100;
 	end
@@ -36,10 +35,6 @@ always @* begin
 
 	end
 	
-	/*For testing
-	$display("-----");
-	for (u = 0; u<32; u = u + 1) $display("%d: %d", u, data [u]);
-	*/
 end
 
 endmodule
