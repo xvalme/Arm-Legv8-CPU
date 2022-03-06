@@ -9,6 +9,11 @@
 `include "ALUSrc_mux.v"
 `include "control_unit.v"
 `include "Sign_extender.v"
+//Pipeline components
+`include "IF_ID.v"
+`include "ID_EX.v"
+`include "EX_MEM.v"
+`include "MEM_WB.v"
 
 module cpu (
 	clock,
@@ -31,21 +36,42 @@ pc PC (.clock(clock), .en_jump(en_jump), .jump(jump_address), .counter(counter))
 output wire [31:0] instruction;
 rom ROM (clock, counter, instruction);
 
+//Pipeline DIVISION --------------------------------------
+//IF_ID Stage
+
+wire [31:0] Instruction;
+wire [63:0] Counter;
+if_id IF_ID (
+	clock,
+	counter,
+	instruction,
+	Instruction_if_id,
+	Counter_if_id
+);
+
 //Reg2Loc Mux.
 wire [4:0] out_reg2loc;
-reg2loc_mux reg2loc_mux (instruction[20:16], instruction[4:0], reg2loc, out_reg2loc);
+reg2loc_mux reg2loc_mux (Instruction_if_id[20:16], Instruction_if_id[4:0], Instruction_if_id[28], out_reg2loc);
 
 //Registers
 output wire [63:0] read1, read2;
 regs regs (clock,
-			instruction[9:5], 
+			Instruction_if_id[9:5], 
 			out_reg2loc,
-			instruction[4:0],
-			RegWrite, 
-			write_data, 
+			#Instruction[4:0],
+			#TODORegWrite, 
+			#TODOwrite_data, 
 			read1,
 			read2);
-			
+
+//Sign extender module
+wire [63:0] sign_extended_address;
+sign_extender sign_extender (instruction,sign_extended_address);
+
+//Pipeline DIVISION --------------------------------------
+
+
+
 //ALUSrc mux
 wire [63:0] out_ALUSrc;
 alusrc_mux alusrc_mux (read2, sign_extended_address, ALUSrc, out_ALUSrc);
@@ -83,12 +109,9 @@ wire en_jump = (Branch & Zero) | UncBranch;
 wire [63:0] jump_address;
 alu JumpAdder (4'd2, counter, sign_extended_address, jump_address,);
 
-//Sign extender module
-wire [63:0] sign_extended_address;
-sign_extender sign_extender (instruction,sign_extended_address);
-
 //Shift extender that picks up the sign extended address to send to PC
 //NOT USED HERE SINCE WE CONSIDER THE WORDS TO BE 32 BIT LONG
+//AND WE TAKE EVERTHING IN THE SAME CLOCK
 /*
 wire [63:0] shifted_add;
 shift_extender shift_extender (sign_extended_address, shifted_add);
