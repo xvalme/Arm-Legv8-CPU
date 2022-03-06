@@ -14,7 +14,7 @@ initial begin //Function loader.
 
 end
 
-always @ (negedge(clock)) begin
+always @ (posedge(clock)) begin
 
 	instruction <= instructions [counter];
 

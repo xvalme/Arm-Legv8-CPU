@@ -9,7 +9,7 @@ initial begin
 	counter = 0;
 end
 
-always @(negedge(clock)) begin 
+always @(posedge(clock)) begin 
 
 	if (en_jump == 0) begin 
 
