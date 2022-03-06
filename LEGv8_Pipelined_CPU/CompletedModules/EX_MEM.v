@@ -9,6 +9,7 @@ module ex_mem (
 	
 	//Mem
 	input wire branch,
+	input wire uncBranch,
 	input wire memread,
 	input wire memwrite,
 	//WB
@@ -23,6 +24,7 @@ module ex_mem (
 	output reg [4:0] Write_reg,
 	//Mem
 	output reg Branch,
+	output reg UncBranch,
 	output reg Memread,
 	output reg Memwrite,
 	//WB
@@ -43,6 +45,7 @@ always @(posedge(clock)) begin
 	Memwrite = memwrite;
 	RegWrite = regWrite;
 	MemtoReg = memtoReg;
+	UncBranch = uncBranch;
 
 end
 

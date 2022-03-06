@@ -10,6 +10,7 @@ module id_ex (
 	input wire aluSrc,
 	//Mem
 	input wire branch,
+	input wire uncond_branch,
 	input wire memread,
 	input wire memwrite,
 	//WB
@@ -30,6 +31,7 @@ module id_ex (
 	output reg ALUSrc,
 	//Mem
 	output reg Branch,
+	output reg Uncond_Branch,
 	output reg Memread,
 	output reg Memwrite,
 	//WB
@@ -54,6 +56,7 @@ always @(posedge(clock)) begin
 	Memwrite = memwrite;
 	RegWrite = regWrite;
 	MemtoReg = memtoReg;
+	Uncond_Branch = uncond_branch;
 
 end
 
