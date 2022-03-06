@@ -39,8 +39,9 @@ rom ROM (clock, counter, instruction);
 //Pipeline DIVISION --------------------------------------
 //IF_ID Stage
 
-wire [31:0] Instruction;
-wire [63:0] Counter;
+wire [31:0] Instruction_if_id;
+wire [63:0] Counter_if_id;
+
 if_id IF_ID (
 	clock,
 	counter,
@@ -59,7 +60,7 @@ regs regs (clock,
 			Instruction_if_id[9:5], //R1
 			out_reg2loc, //R2 
 			write_reg_mem_wb, 
-			RegWrite_mem_wb
+			RegWrite_mem_wb,
 			write_data, 
 			read1,
 			read2);
@@ -79,7 +80,7 @@ Instruction_if_id[31:21], reg2loc, ALUSrc, memtoreg,
 RegWrite, readmem_en, writemem_en, Branch,UncBranch, AluOp);
 
 //Pipeline DIVISION --------------------------------------
-wire [31:0] Counter_id_ex;
+wire [63:0] Counter_id_ex;
 wire [63:0] read1_id_ex, read2_id_ex;
 wire [63:0] sign_extended_address_id_ex;
 wire [10:0] alu_ctrl_data;
@@ -157,7 +158,7 @@ ex_mem EX_MEM (
 	ALU_out,
 	Zero,
 	read2_id_ex,
-	RegWrite_id_ex,
+	write_reg_id_ex,
 	Branch_id_ex,
 	UncBranch_id_ex,
 	readmem_en_id_ex,
@@ -204,7 +205,7 @@ mem_wb MEM_WB (
 	write_reg_mem_wb,
 	RegWrite_mem_wb, 
 	memtoreg_mem_wb
-)
+);
 
 //Memtoreg Mux at the end of memory 
 wire [63:0] write_data;

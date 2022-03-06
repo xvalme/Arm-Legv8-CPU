@@ -1,8 +1,8 @@
 module id_ex (
 	input clock,
 	//Data for later
-	input wire [31:0] read1,
-	input wire [31:0] read2,
+	input wire [63:0] read1,
+	input wire [63:0] read2,
 	input wire [63:0] sign_extended,
 	input wire [31:0] instruction, 
 	//Ex
@@ -21,11 +21,11 @@ module id_ex (
 
 	//Outputs
 	output reg [63:0] Pc,
-	output reg [31:0] Read1,
-	output reg [31:0] Read2,
+	output reg [63:0] Read1,
+	output reg [63:0] Read2,
 	output reg [63:0] Sign_extended,
 	output reg [10:0] alu_ctrl_data,
-	output reg [5:0] write_reg,
+	output reg [4:0] write_reg,
 	//Ex
 	output reg [1:0] AluOp,
 	output reg ALUSrc,
