@@ -31,14 +31,14 @@ initial begin
 
 end
 
-always @(posedge(clock)) begin
+always @(negedge(clock)) begin
 
 	read_1 = regs [add1];
 	read_2 = regs [add2];
 	
 end
 
-always @(negedge(clock)) begin
+always @(posedge(clock)) begin
 	if (write_en) begin
 		regs[write_add] = write_data;
 	end
