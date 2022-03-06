@@ -14,7 +14,7 @@ always @* begin
 		1: Out <= A | B;
 		2: Out <= A + B;
 		6: Out <= A - B;
-		7: Out <= A < B ? 1 : 0;
+		7: Out <= B;
 		12: Out <= ~(A | B); //NOR
 		default: Out <= 0;
 	

@@ -1,5 +1,6 @@
 //The 32 registers are declared here. 
-//Writting and reading in the same clock is ok, but the written register will have the old value (obviously)
+//Writting and reading in the same clock is ok, 
+//but the written register will have the old value
 
 module regs (
 	input clock,
@@ -15,20 +16,15 @@ module regs (
 
 );
 
-reg [63:0] regs [31:0];
-integer i;
-integer u;
+output reg [63:0] regs [31:0];
 
 initial begin 
 
 	//Register 31 goes to 0 just like the guidelines.
+	//Others will just get filled with trash
 	regs [31] <= 0;
+	regs[0] <= 0;
 	
-	//Giving values to registers from 0 up to 30
-	for (i = 0; i<31; i = i + 1) begin
-		regs[i] <= i;
-	end
-
 end
 
 always @(posedge(clock)) begin
@@ -42,11 +38,14 @@ always @(negedge(clock)) begin
 	if (write_en) begin
 		regs[write_add] = write_data;
 	end
+<<<<<<< HEAD
 	
 
 	$display("-----");
 	for (u = 0; u<32; u = u + 1) $display("Reg %d: %d", u, regs [u]);
 
+=======
+>>>>>>> ed951fab94c12d9153af64908a2a0fabc7559313
 end
 
 endmodule

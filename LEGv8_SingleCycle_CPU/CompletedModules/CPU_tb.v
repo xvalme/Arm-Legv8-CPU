@@ -21,7 +21,7 @@ initial begin
  $dumpvars(0,cpu);
 
 clock = 0;
-#20
+#50
 
 $finish;
 
