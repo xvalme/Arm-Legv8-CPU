@@ -122,7 +122,6 @@ id_ex ID_EX (
 	writemem_en_id_ex,
  	RegWrite_id_ex, 
 	memtoreg_id_ex
-
 );
 
 //ALUSrc mux
@@ -136,7 +135,7 @@ alu ALU (ALUCtrl, read1_id_ex, out_ALUSrc, ALU_out, Zero);
 
 //ALUCtrl
 wire [3:0] ALUCtrl; //Alu Code to select working function
-aluctrl aluctrl (AluOp_id_ex, alu_ctrl_data, ALUCtrl);
+aluctrl Aluctrl (AluOP_id_ex, alu_ctrl_data, ALUCtrl);
 
 //ALU that works as an Adder for the jumping address.
 wire [63:0] jump_address;

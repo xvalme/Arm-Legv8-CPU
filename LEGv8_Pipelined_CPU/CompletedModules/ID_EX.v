@@ -6,7 +6,7 @@ module id_ex (
 	input wire [63:0] sign_extended,
 	input wire [31:0] instruction, 
 	//Ex
-	input wire [1:0] aluOp,
+	input wire [1:0] aluop,
 	input wire aluSrc,
 	//Mem
 	input wire branch,
@@ -27,7 +27,7 @@ module id_ex (
 	output reg [10:0] alu_ctrl_data,
 	output reg [4:0] write_reg,
 	//Ex
-	output reg [1:0] AluOp,
+	output reg [1:0] Aluop,
 	output reg ALUSrc,
 	//Mem
 	output reg Branch,
@@ -49,7 +49,7 @@ always @(posedge(clock)) begin
 	Read2 = read2;
 	Sign_extended = sign_extended;
 	Pc = pc;
-	AluOp = aluOp;
+	Aluop = aluop;
 	ALUSrc = aluSrc;
 	Branch = branch;
 	Memread = memread;
