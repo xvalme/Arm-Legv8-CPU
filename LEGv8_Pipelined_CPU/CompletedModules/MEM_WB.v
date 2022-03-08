@@ -4,6 +4,7 @@ module mem_wb (
 	input wire [63:0] read_data,
 	input wire [63:0] alu_result,
 	input wire [4:0] write_reg,
+	input wire [31:0] Instruction; //Just for testing
 	//WB
 	input wire regWrite,
 	input wire memtoReg,
