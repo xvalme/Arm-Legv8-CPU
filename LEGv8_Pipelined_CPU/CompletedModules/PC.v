@@ -9,7 +9,7 @@ initial begin
 	counter = 0;
 end
 
-always @(posedge(clock)) begin 
+always @(negedge(clock)) begin 
 
 	if (en_jump == 0) begin 
 
@@ -17,10 +17,6 @@ always @(posedge(clock)) begin
 	end
 	
 	$display("Counter: %d", counter);
-
-end
-
-always @(posedge(clock)) begin 
 
 	if (en_jump == 1) begin 
 

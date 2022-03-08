@@ -1,6 +1,6 @@
 module ex_mem (
 	input clock,
-	input wire [31:0] Instruction; //Just for testing
+	input wire [31:0] instruction, //Just for testing
 	//Data for later
 	input wire [63:0] add_result,
 	input wire [63:0] alu_result,
@@ -30,7 +30,9 @@ module ex_mem (
 	output reg Memwrite,
 	//WB
 	output reg RegWrite,
-	output reg MemtoReg
+	output reg MemtoReg,
+	//Instruction for testing
+	output reg [31:0] Instruction_ex_mem
 
 );
 
@@ -47,6 +49,7 @@ always @(posedge(clock)) begin
 	RegWrite = regWrite;
 	MemtoReg = memtoReg;
 	UncBranch = uncBranch;
+	Instruction_ex_mem = instruction;
 
 end
 

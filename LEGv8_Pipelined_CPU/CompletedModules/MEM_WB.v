@@ -4,13 +4,13 @@ module mem_wb (
 	input wire [63:0] read_data,
 	input wire [63:0] alu_result,
 	input wire [4:0] write_reg,
-	input wire [31:0] instruction; //Just for testing
+	input wire [31:0] instruction, //Just for testing
 	//WB
 	input wire regWrite,
 	input wire memtoReg,
 
 	//Outputs
-	output reg [31:0] Instruction;
+	output reg [31:0] Instruction_mem_wb,
 	
 	output reg [63:0] Read_data,
 	output reg [63:0] Alu_result,
@@ -22,14 +22,14 @@ module mem_wb (
 
 );
 
-always @(posedge(clock)) begin
+always @(negedge(clock)) begin
 
-	Instruction = instruction;
 	Read_data = read_data;
 	Alu_result = alu_result;
 	Write_reg = write_reg;
 	RegWrite = regWrite;
 	MemtoReg = memtoReg;
+	Instruction_mem_wb = instruction;
 
 end
 

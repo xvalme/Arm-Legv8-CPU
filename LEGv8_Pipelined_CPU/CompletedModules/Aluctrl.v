@@ -15,8 +15,10 @@ module aluctrl (
           11'b11001011000 : ALU_Out <= 4'b0110; // SUB
           11'b10001010000 : ALU_Out <= 4'b0000; // AND
           11'b10101010000 : ALU_Out <= 4'b0001; // ORR
+          default: ALU_Out <= 4'b0000;
         endcase
       end
+      default: ALU_Out = 4'b0000;
     endcase
  
  end

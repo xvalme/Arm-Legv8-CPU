@@ -90,6 +90,7 @@ wire ALUSrc_id_ex;
 wire Branch_id_ex, UncBranch_id_ex;
 wire readmem_en_id_ex, writemem_en_id_ex;
 wire RegWrite_id_ex, memtoreg_id_ex;
+wire [31:0] instruction_id_ex;
 
 id_ex ID_EX (
 	//Inputs:
@@ -121,7 +122,8 @@ id_ex ID_EX (
 	readmem_en_id_ex,
 	writemem_en_id_ex,
  	RegWrite_id_ex, 
-	memtoreg_id_ex
+	memtoreg_id_ex,
+	instruction_id_ex
 );
 
 //ALUSrc mux
@@ -150,9 +152,11 @@ wire [4:0] write_reg_ex_mem;
 wire Branch_ex_mem, UncBranch_ex_mem;
 wire readmem_en_ex_mem, writemem_en_ex_mem;
 wire RegWrite_ex_mem, memtoreg_ex_mem;
+wire [31:0] instruction_ex_mem;
 
 ex_mem EX_MEM (
 	clock,
+	instruction_id_ex,
 	jump_address,
 	ALU_out,
 	Zero,
@@ -175,7 +179,8 @@ ex_mem EX_MEM (
 	readmem_en_ex_mem,
 	writemem_en_ex_mem,
  	RegWrite_ex_mem, 
-	memtoreg_ex_mem
+	memtoreg_ex_mem,
+	instruction_ex_mem
 
 );
 
@@ -190,15 +195,18 @@ wire [63:0] mem_data_mem_wb;
 wire [63:0] ALU_out_mem_wb;
 wire [4:0] write_reg_mem_wb;
 wire RegWrite_mem_wb, memtoreg_mem_wb;
+wire [31:0] instruction_mem_wb;
 
 mem_wb MEM_WB (
 	clock,
 	mem_data,
 	ALU_out_ex_mem,
 	write_reg_ex_mem,
+	instruction_ex_mem,
 	RegWrite_ex_mem,
 	memtoreg_ex_mem,
 	//Outputs
+	instruction_mem_wb,
 	mem_data_mem_wb,
 	ALU_out_mem_wb,
 	write_reg_mem_wb,

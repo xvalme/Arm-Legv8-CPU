@@ -36,12 +36,13 @@ module id_ex (
 	output reg Memwrite,
 	//WB
 	output reg RegWrite,
-	output reg MemtoReg
+	output reg MemtoReg,
+	output reg [31:0] Instruction_id_ex
 
 );
 
 
-always @(posedge(clock)) begin
+always @(negedge(clock)) begin
 
 	alu_ctrl_data = instruction [31:21];
 	write_reg = instruction[4:0];
@@ -57,6 +58,7 @@ always @(posedge(clock)) begin
 	RegWrite = regWrite;
 	MemtoReg = memtoReg;
 	Uncond_Branch = uncond_branch;
+	Instruction_id_ex = instruction;	
 
 end
 
