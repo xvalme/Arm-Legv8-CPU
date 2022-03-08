@@ -1,5 +1,6 @@
 module ex_mem (
 	input clock,
+	input wire [31:0] Instruction; //Just for testing
 	//Data for later
 	input wire [63:0] add_result,
 	input wire [63:0] alu_result,
