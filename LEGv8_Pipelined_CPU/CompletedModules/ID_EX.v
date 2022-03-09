@@ -42,23 +42,23 @@ module id_ex (
 );
 
 
-always @(negedge(clock)) begin
+always @(posedge(clock)) begin
 
-	alu_ctrl_data = instruction [31:21];
-	write_reg = instruction[4:0];
-	Read1 = read1;
-	Read2 = read2;
-	Sign_extended = sign_extended;
-	Pc = pc;
-	Aluop = aluop;
-	ALUSrc = aluSrc;
-	Branch = branch;
-	Memread = memread;
-	Memwrite = memwrite;
-	RegWrite = regWrite;
-	MemtoReg = memtoReg;
-	Uncond_Branch = uncond_branch;
-	Instruction_id_ex = instruction;	
+	alu_ctrl_data <= instruction [31:21];
+	write_reg <= instruction[4:0];
+	Read1 <= read1;
+	Read2 <= read2;
+	Sign_extended <= sign_extended;
+	Pc <= pc;
+	Aluop <= aluop;
+	ALUSrc <= aluSrc;
+	Branch <= branch;
+	Memread <= memread;
+	Memwrite <= memwrite;
+	RegWrite <= regWrite;
+	MemtoReg <= memtoReg;
+	Uncond_Branch <= uncond_branch;
+	Instruction_id_ex <= instruction;	
 
 end
 
