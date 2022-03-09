@@ -38,18 +38,18 @@ module ex_mem (
 
 always @(posedge(clock)) begin
 
-	Add_result = add_result;
-	Alu_result = alu_result;
-	Zero = zero;
-	Read2 = read2;
-	Write_reg = write_reg;
-	Branch = branch;
-	Memread = memread;
-	Memwrite = memwrite;
-	RegWrite = regWrite;
-	MemtoReg = memtoReg;
-	UncBranch = uncBranch;
-	Instruction_ex_mem = instruction;
+	Add_result <= add_result;
+	Alu_result <= alu_result;
+	Zero <= zero;
+	Read2 <= read2;
+	Write_reg <= write_reg;
+	Branch <= branch;
+	Memread <= memread;
+	Memwrite <= memwrite;
+	RegWrite <= regWrite;
+	MemtoReg <= memtoReg;
+	UncBranch <= uncBranch;
+	Instruction_ex_mem <= instruction;
 
 end
 
