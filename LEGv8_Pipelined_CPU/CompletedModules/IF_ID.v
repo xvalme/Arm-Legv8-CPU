@@ -8,8 +8,8 @@ module if_id (
 );
 
 always @(posedge(clock)) begin
-	Pc = pc;
-	Instruction_if_id = instruction;
+	Pc <= pc;
+	Instruction_if_id <= instruction;
 end
 
 endmodule
