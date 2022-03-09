@@ -2,4 +2,4 @@ Only pipelined version.
 
 No hazard prevention, nor data fowarding!!!
 
-Each instruction takes 4 clock cycles to finish.
+Image shows a simple test made with the code in the *instructions.txt* file
