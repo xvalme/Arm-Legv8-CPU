@@ -22,14 +22,14 @@ module mem_wb (
 
 );
 
-always @(negedge(clock)) begin
+always @(posedge(clock)) begin
 
-	Read_data = read_data;
-	Alu_result = alu_result;
-	Write_reg = write_reg;
-	RegWrite = regWrite;
-	MemtoReg = memtoReg;
-	Instruction_mem_wb = instruction;
+	Read_data <= read_data;
+	Alu_result <= alu_result;
+	Write_reg <= write_reg;
+	RegWrite <= regWrite;
+	MemtoReg <= memtoReg;
+	Instruction_mem_wb <= instruction;
 
 end
 
